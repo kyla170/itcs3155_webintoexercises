@@ -1,0 +1,43 @@
+<body>
+    <input id="name-input" type="text" placeholder="Enter your name" />
+    <button id="my-button">
+        Click Me
+    </button>
+
+    <input type="text" id="txt-price" placeholder="Enter the price of the item">
+    <input type="text" id="txt-quantity" placeholder="Enter the quanity of the item">
+    <button id="btn-submit">Calculate</button>
+    <div id="output"></div>
+
+    <script>
+      // Initial variables
+      var priceInput = document.getElementById('txt-price');
+      var quantityInput = document.getElementById('txt-quantity');
+      var submitBtn = document.getElementById('btn-submit');
+      var output = document.getElementById('output');
+
+      // Submit button click event listener
+      submitBtn.addEventListener('click', function () 
+      {
+        // Initial listener variables
+        var price = priceInput.value;
+        var quanity = quantityInput.value;
+
+        // Update variables in float
+        price = +price;
+        quanity = +quanity;
+        // Check for blank input
+        if (Number.isNaN(price) || Number.isNaN(quanity)) 
+        {
+          output.innerHTML = 'Invalid input';
+          return;
+        }
+        // Calculate total price
+        var totalPrice = price * quanity;
+        // Round totalprice to nearest integer and convert back to dollars
+        totalPrice = Math.round(totalPrice * 100) / 100;
+        // Display results
+        output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice;
+      });
+</script>
+</body>
